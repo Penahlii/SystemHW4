@@ -1,0 +1,72 @@
+﻿<Window x:Class="SystemPractice.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:SystemPractice"
+        mc:Ignorable="d"
+        Title="MainWindow" Height="450" Width="800"
+        ResizeMode="NoResize"
+        Background="Gray">
+    <Grid>
+
+        <Grid.RowDefinitions>
+            <RowDefinition Height="75"/>
+            <RowDefinition/>
+            <RowDefinition Height="75"/>
+        </Grid.RowDefinitions>
+
+
+        <TextBlock Margin="35,45,0,0" Text="Working Threads" FontSize="20"/>
+        <TextBlock x:Name="Sa" Margin="330,45,0,0" Text="Waiting Threads" FontSize="20"/>
+        <TextBlock Margin="600,45,0,0" Text="Created Threads" FontSize="20"/>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+                <ColumnDefinition/>
+            </Grid.ColumnDefinitions>
+
+            <ListView x:Name="WorkingThreadsListView" HorizontalContentAlignment="Stretch">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ManagedThreadId}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView x:Name="WaitingThreadsListView" Grid.Column="1" HorizontalContentAlignment="Stretch">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ManagedThreadId}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+            <ListView MouseDoubleClick="ListViewDoubleClick" x:Name="CreatedThreadsListView" Grid.Column="2" HorizontalContentAlignment="Stretch">
+                <ListView.View>
+                    <GridView>
+                        <GridViewColumn Header="Name" DisplayMemberBinding="{Binding Name}"/>
+                        <GridViewColumn Header="ID" DisplayMemberBinding="{Binding ManagedThreadId}"/>
+                    </GridView>
+                </ListView.View>
+            </ListView>
+
+        </Grid>
+
+        <Button 
+            Margin="590,0,0,0"
+            Content="Create"
+            Foreground="White"
+            Background="Black"
+            Width="100" 
+            Height="50" 
+            Grid.Row="2" 
+            x:Name="CrateThreadBtn"
+            Click="CreateButtonClick"/>
+
+    </Grid>
+</Window>
